@@ -1,66 +1,158 @@
+import 'package:first_app/data/movie.dart';
+import 'package:first_app/widgets/custom_Card.dart';
 import 'package:flutter/material.dart';
 
-class Cinema extends StatelessWidget {
-  const Cinema({Key? key}) : super(key: key);
+class MyCinema extends StatefulWidget {
+  const MyCinema({super.key});
+
+  @override
+  State<MyCinema> createState() => _MycinemaState();
+}
+
+class _MycinemaState extends State<MyCinema> {
+  List<MovieModel> foryouItemsList = List.of(forYouImages);
+  PageController pageController =
+      PageController(initialPage: 0, viewportFraction: 0.9);
+
+  int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "ATEO CINEMA",
-          style: TextStyle(
-            color: Colors.white,
+      backgroundColor: Colors.black,
+      body: Stack(children: [
+        SafeArea(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Cinema xin chào !",
+                          style: TextStyle(color: Colors.white, fontSize: 30),
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  image: const DecorationImage(
+                                      image: NetworkImage(
+                                          "https://lh3.googleusercontent.com/a/ACg8ocLMB-rqlKSFR8nT0fzEDBD5UIdtTD-m99W4qL-rGFbC7A=s288-c-no"),
+                                      fit: BoxFit.cover)),
+                            ),
+                            Positioned(
+                              right: 2,
+                              top: 2,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white24,
+                                ),
+                                height: 10,
+                                width: 10,
+                              ),
+                            )
+                          ],
+                        )
+                      ]),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 198, 195, 185),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.search,
+                            color: const Color.fromARGB(255, 180, 140, 21),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Text("Tìm kiếm",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color.fromARGB(255, 180, 140, 21)))
+                        ],
+                      )),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  child: Text(
+                    "Phim hay ",
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+                foryoucardsLayout(forYouImages),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text("Phổ biến",
+                              style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w300)),
+                          Text("Xem tất cả",
+                              style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w300))
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-        backgroundColor: Colors.blue,
-      ),
-      body: Container(
-        child: PageView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 9,
-          pageSnapping: true,
-          itemBuilder: (context, pagePosition) {
-            List<String> imagePaths = [
-              "assets/images/meow.jpg",
-              "assets/images/meoww.jpg",
-              "assets/images/meowww.jpg",
-              "assets/images/meowwww.jpg",
-            ];
+        )
+      ]),
+    );
+  }
 
-            List<String> textPaths = [
-              "The Cat 1",
-              "The Cat 2",
-              "The Cat 3",
-              "The Cat 4",
-            ];
-
-            int index1 = pagePosition % textPaths.length;
-            int index = pagePosition % imagePaths.length;
-            return Container(
-              margin: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Image.asset(
-                      imagePaths[index],
-                      width: 300,
-                    ),
-                  ),
-                  Text(
-                    textPaths[index1],
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            );
+  Widget foryoucardsLayout(List<MovieModel> movieList) {
+    return SizedBox(
+      height: MediaQuery.of(context as BuildContext).size.height * 0.50,
+      child: PageView.builder(
+          controller: pageController,
+          itemCount: movieList.length,
+          itemBuilder: (context, index) {
+            return MyCustomCard(
+                imageAsset: movieList[index].imageAsset.toString());
           },
-        ),
-      ),
+          onPageChanged: (int page) {
+            setState(() {
+              currentPage = page;
+            });
+          }),
     );
   }
 }
