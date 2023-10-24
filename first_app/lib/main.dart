@@ -1,4 +1,7 @@
 import 'package:first_app/my_cinema.dart';
+import 'package:first_app/my_class_room.dart';
+import 'package:first_app/my_form.dart';
+import 'package:first_app/my_math.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: "ATEODINANG",
-      home: Cinema(),
+      home: MyCinema(),
       debugShowCheckedModeBanner: false,
     );
   }
