@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:first_app/instagram/home_screen.dart';
-import 'package:first_app/instagram/profile_scree.dart';
+import 'package:first_app/instagram/profile_screen.dart';
 import 'package:first_app/instagram/reels_screen.dart';
 import 'package:first_app/instagram/search_screen.dart';
 import 'package:first_app/instagram/shop_screen.dart';
