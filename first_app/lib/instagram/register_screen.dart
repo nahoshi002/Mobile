@@ -100,7 +100,22 @@ class RegisterScreen extends StatelessWidget {
                   filled: true,
                   constraints: BoxConstraints.tightFor(width: 327, height: 50),
                   hintStyle: TextStyle(color: Colors.grey),
-                  hintText: 'Password',
+                  hintText: 'Phone number or Email',
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(11)),
+                  fillColor: Colors.grey.shade700,
+                  prefixIconColor: Colors.white,
+                  filled: true,
+                  constraints: BoxConstraints.tightFor(width: 327, height: 50),
+                  hintStyle: TextStyle(color: Colors.grey),
+                  hintText: 'Full Name',
                 ),
               ),
               SizedBox(
@@ -130,22 +145,7 @@ class RegisterScreen extends StatelessWidget {
                   filled: true,
                   constraints: BoxConstraints.tightFor(width: 327, height: 50),
                   hintStyle: TextStyle(color: Colors.grey),
-                  hintText: 'Password',
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11)),
-                  fillColor: Colors.grey.shade700,
-                  prefixIconColor: Colors.white,
-                  filled: true,
-                  constraints: BoxConstraints.tightFor(width: 327, height: 50),
-                  hintStyle: TextStyle(color: Colors.grey),
-                  hintText: 'Password',
+                  hintText: 'Confirm Password',
                 ),
               ),
               SizedBox(
