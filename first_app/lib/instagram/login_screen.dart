@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ))),
           Expanded(
-              flex: 4,
+              flex: 8,
               child: Column(
                 children: [
                   Container(
@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                         image: AssetImage('assets/images/logo.jpg'),
                       )),
                   SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
                   TextField(
                     decoration: InputDecoration(

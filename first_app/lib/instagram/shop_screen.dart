@@ -19,13 +19,6 @@ class ShopScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Icon(
-                  Icons.shopping_cart,
-                  size: 30,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(
                   Icons.table_rows_rounded,
                   size: 30,
                 ),

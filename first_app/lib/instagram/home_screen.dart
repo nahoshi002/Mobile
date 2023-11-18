@@ -28,13 +28,6 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Icon(
-                  Icons.add_box_outlined,
-                  size: 30,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(
                   Icons.favorite_outline_rounded,
                   size: 30,
                 ),
